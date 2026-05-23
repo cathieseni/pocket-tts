@@ -69,11 +69,9 @@ This is a pure Python package with Rust extensions in `training/rust_exts/audio_
 - `seanet.py`: SEANet encoder/decoder (copied from moshi)
 
 **Conditioners (`conditioners/`):**
-- `text.py`: `LUTConditioner` - Sentence
+- `text.py`: `LUTConditioner` - SentencePiece-based text tokenizer that maps tokens to embeddings via a lookup table
 
 ## Personal Notes
 
-> **Fork notes (personal use/learning):** I'm using this primarily to experiment with
-> different voice prompts and study the streaming architecture. The LRU cache in
-> `tts_model.py` for voice prompts is worth understanding early — it significantly
-> affects latency when switching between speakers.
+> **Fork purpose:** I'm using this project to learn about flow-based TTS architectures and streaming inference.
+> Main areas I'm exploring: how `FlowLMModel` conditions on text, and how the KV cache is managed in `stateful_module.py`.
