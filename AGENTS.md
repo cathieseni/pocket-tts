@@ -69,10 +69,12 @@ This is a pure Python package with Rust extensions in `training/rust_exts/audio_
 - `seanet.py`: SEANet encoder/decoder (copied from moshi)
 
 **Conditioners (`conditioners/`):**
-- `text.py`: `LUTConditioner` - Sentence
+- `text.py`: `LUTConditioner` - SentencePiece-based text tokenizer with lookup table embeddings
 
 ## Personal Notes
 
-> **Fork purpose:** Studying the streaming TTS pipeline and experimenting with different default generation parameters. Main areas of interest are `default_parameters.py` and `tts_model.py`.
+> **Fork purpose:** Learning how flow-based TTS models work, particularly the LSD training approach and streaming inference architecture. I'm mainly exploring `flow_lm.py` and `tts_model.py`.
 
-> **Tip:** When iterating on generation quality, it's faster to use `uv run pytest tests/test_python_api.py -v` rather than the full test suite — the full suite can be slow on CPU-only machines.
+- The `generate_audio_stream()` method in `tts_model.py` is the best entry point for understanding end-to-end inference.
+- The LRU cache on voice prompts is a nice touch — worth understanding how `get_state_for_audio_prompt()` encodes the audio before caching.
+- TODO (personal): experiment with adjusting temperature/cfg scale defaults in `default_parameters.py` to see how they affect output quality.
