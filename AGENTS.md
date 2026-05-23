@@ -73,6 +73,6 @@ This is a pure Python package with Rust extensions in `training/rust_exts/audio_
 
 ## Personal Notes
 
-> **Fork notes (personal):** I'm using this primarily for offline TTS on a low-power laptop.
-> The LRU cache size for voice prompts in `tts_model.py` is worth tuning if memory is tight —
-> reducing it to 1 or 2 cached voices is usually sufficient for single-speaker use cases.
+> **Fork purpose:** Studying the streaming TTS pipeline and experimenting with different default generation parameters. Main areas of interest are `default_parameters.py` and `tts_model.py`.
+
+> **Tip:** When iterating on generation quality, it's faster to use `uv run pytest tests/test_python_api.py -v` rather than the full test suite — the full suite can be slow on CPU-only machines.
