@@ -73,6 +73,7 @@ This is a pure Python package with Rust extensions in `training/rust_exts/audio_
 
 ## Personal Notes
 
-> **Fork purpose:** Learning the streaming TTS pipeline and experimenting with voice prompt caching behavior.
-> The LRU cache in `tts_model.py` is worth understanding early — it has a big impact on latency
-> when switching between voices repeatedly.
+> **Note (personal fork):** I'm using this primarily for offline/local TTS experiments. A few things I want to explore:
+> - Batching multiple sentences in a single `generate_audio_stream()` call to reduce model load overhead
+> - The LRU cache size for voice prompts in `tts_model.py` — worth tuning if memory is tight
+> - The `default_parameters.py` values (especially temperature/cfg scale) seem like good knobs for quality vs. speed tradeoffs
